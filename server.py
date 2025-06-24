@@ -54,7 +54,7 @@ def profile():
     </head>
     <body>
         <div class="profile-card">
-            <img src="/image/ronan.jpg" alt="Ronan Bautista">
+            <img src="/image/ronanb.jpg" alt="Ronan Bautista">
             <h1>Ronan Bautista</h1>
             <p><strong>Student</strong></p>
 
