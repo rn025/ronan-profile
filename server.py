@@ -1,33 +1,62 @@
-from flask import Flask, render_template_string, send_file
+from flask import Flask, render_template_string
 
 app = Flask(__name__)
-# Force push for Render redeploy
+
 @app.route('/')
-def home():
+def profile():
     return render_template_string('''
-        <h1>Ronan Bautista</h1>
-        <p><strong>Student</strong></p>
+    <html>
+    <head>
+        <title>Ronan Bautista - Profile</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f2f5;
+                margin: 0;
+                padding: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .profile-card {
+                background-color: white;
+                padding: 30px;
+                border-radius: 15px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                max-width: 600px;
+                width: 100%;
+            }
+            h1 {
+                margin-top: 0;
+                color: #2c3e50;
+            }
+            p {
+                margin: 8px 0;
+                line-height: 1.5;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="profile-card">
+            <h1>Ronan Bautista</h1>
+            <p><strong>Student</strong></p>
 
-        <h3>About Me</h3>
-        <p>A freshman Computer Engineering student at EARIST, passionate about continuous learning and eager to grow in programming and technology.</p>
+            <h2>About Me</h2>
+            <p>A freshman Computer Engineering student at EARIST, passionate about continuous learning and eager to grow in programming and technology.</p>
 
-        <p><strong>Address:</strong> 636, Sampaloc, Manila.</p>
-        <p><strong>Birthdate:</strong> January 25, 2005</p>
-        <p><strong>Status:</strong> Single</p>
-        <p><strong>Height:</strong> 5'4</p>
-        <p><strong>School:</strong> Eulogio Amang Rodriguez Institute of Science and Technology</p>
-        <p><strong>Program:</strong> BS Computer Engineering</p>
+            <p><strong>Address:</strong> 636, Sampaloc, Manila</p>
+            <p><strong>Birthdate:</strong> January 25, 2005</p>
+            <p><strong>Status:</strong> Single</p>
+            <p><strong>Height:</strong> 5'4</p>
 
-        <h3>Contact</h3>
-        <p>Email: bautistaronan0525@gmail.com</p>
+            <h2>Academic</h2>
+            <p><strong>School:</strong> Eulogio Amang Rodriguez Institute of Science and Technology</p>
+            <p><strong>Program:</strong> BS Computer Engineering</p>
 
-        <br>
-        <a href="/download">⬇️ Download My Profile App (.exe)</a>
+            <h2>Contact</h2>
+            <p><strong>Email:</strong> bautistaronan0525@gmail.com</p>
+        </div>
+    </body>
+    </html>
     ''')
-
-@app.route('/download')
-def download():
-    return send_file("ronan_pf.exe", as_attachment=True)
-
-if __name__ == '__main__':
-  app.run(host="0.0.0.0", port=5000)
