@@ -1,6 +1,11 @@
-from flask import Flask, render_template_string
+from flask import Flask, render_template_string, send_from_directory
+import os
 
 app = Flask(__name__)
+
+@app.route('/image/<filename>')
+def image(filename):
+    return send_from_directory(os.getcwd(), filename)
 
 @app.route('/')
 def profile():
@@ -11,7 +16,8 @@ def profile():
         <style>
             body {
                 font-family: Arial, sans-serif;
-                background-color: #f0f2f5;
+                background-color: #0b1d3a;
+                color: #ffffff;
                 margin: 0;
                 padding: 20px;
                 display: flex;
@@ -20,16 +26,25 @@ def profile():
                 height: 100vh;
             }
             .profile-card {
-                background-color: white;
+                background-color: #13294b;
                 padding: 30px;
                 border-radius: 15px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
                 max-width: 600px;
                 width: 100%;
+                text-align: center;
             }
-            h1 {
+            .profile-card img {
+                width: 150px;
+                height: 150px;
+                border-radius: 10px;
+                object-fit: cover;
+                margin-bottom: 20px;
+                border: 2px solid #ffffff;
+            }
+            h1, h2 {
+                color: #4db8ff;
                 margin-top: 0;
-                color: #2c3e50;
             }
             p {
                 margin: 8px 0;
@@ -39,18 +54,23 @@ def profile():
     </head>
     <body>
         <div class="profile-card">
+            <img src="/image/ronan.jpg" alt="Ronan Bautista">
             <h1>Ronan Bautista</h1>
             <p><strong>Student</strong></p>
 
             <h2>About Me</h2>
+            
             <p>A freshman Computer Engineering student at EARIST, passionate about continuous learning and eager to grow in programming and technology.</p>
-
+            
+            <h2>Personal Background</2>
+            
             <p><strong>Address:</strong> 636, Sampaloc, Manila</p>
             <p><strong>Birthdate:</strong> January 25, 2005</p>
             <p><strong>Status:</strong> Single</p>
             <p><strong>Height:</strong> 5'4</p>
 
             <h2>Academic</h2>
+            
             <p><strong>School:</strong> Eulogio Amang Rodriguez Institute of Science and Technology</p>
             <p><strong>Program:</strong> BS Computer Engineering</p>
 
